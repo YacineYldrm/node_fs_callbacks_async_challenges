@@ -1,14 +1,15 @@
 const fs = require('fs');
-const data = 'data.json'
+const jsonData = 'data.json'
+const txtData = 'data.txt'
 
 // lese JSON-datei aus
-fs.readFile('./data.json', (err, buffer) => {
-    if(err) return console.log(`Fehler beim Einlesen von ${data}`);
+fs.readFile(`./${jsonData}`, (err, buffer) => {
+    if(err) return console.log(`Fehler beim Einlesen von ${jsonData}`);
 
     const jsonContent = buffer.toString();
 
     // erzeuge txt datei, mit dem Inhalt der JSON-Datei
-    fs.writeFile('data.txt', jsonContent, err => {
-        if(err) console.log("Erzeugen von data.txt fehlgeschlagen");
+    fs.writeFile(`./${txtData}`, jsonContent, err => {
+        if(err) console.log(`Erzeugen von ${txtData} fehlgeschlagen`);
     })
 })
